@@ -1,23 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-  /* Colors */
-  --color-onyx: #0B0B0A;
-  --color-onyx-soft: #15140F;
-  --color-onyx-line: #262420;
+  /* Colors — cool, mature slate/steel palette */
+  --color-onyx: #0B1220;
+  --color-onyx-soft: #121B2E;
+  --color-onyx-line: #22314A;
 
-  --color-ivory: #F2EDE4;
-  --color-ivory-dim: #E8E1D3;
+  --color-ivory: #E9ECEF;
+  --color-ivory-dim: #C6CCD3;
 
-  --color-gold: #C9A24B;
-  --color-gold-bright: #E0BE71;
-  --color-gold-deep: #8A6A2F;
+  --color-gold: #5D84AC;
+  --color-gold-bright: #82A7CC;
+  --color-gold-deep: #2E4458;
 
-  --color-burgundy: #5E1F25;
-  --color-burgundy-deep: #3D1218;
+  --color-burgundy: #3E5872;
+  --color-burgundy-deep: #263847;
 
-  --color-ash: #6B6862;
-  --color-ash-light: #9C988F;
+  --color-ash: #6B7280;
+  --color-ash-light: #99A1AC;
+
+  --color-paper: #F5F6F7;
+  --color-paper-soft: #EAEBEE;
+  --color-paper-line: #D6DADF;
 
   /* Font families */
   --font-display: var(--font-fraunces), serif;
@@ -118,8 +122,8 @@ textarea:focus-visible {
     90deg,
     transparent 0,
     transparent 6px,
-    rgba(201, 162, 75, 0.45) 6px,
-    rgba(201, 162, 75, 0.45) 9px
+    rgba(93, 132, 172, 0.45) 6px,
+    rgba(93, 132, 172, 0.45) 9px
   );
 }
 

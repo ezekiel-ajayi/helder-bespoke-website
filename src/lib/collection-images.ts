@@ -1,9 +1,8 @@
 import { StaticImageData } from "next/image";
-import agbada from "../assets/images/agbadaStyle1.png";
-import senatorwear from "../assets/images/senator.png";
-import kaftan from "../assets/images/kaftan.jpg";
-import Agbada1 from "../assets/images/agbada1.svg"
-import dansiki from "../assets/images/danshiki.svg"
+import agbada from "@/public/assets/images/agbadaStyle1.png";
+import senatorwear from "@/public/assets/images/senator.png";
+import kaftan from "@/public/assets/images/kaftan.jpg";
+import dansiki from "@/public/assets/images/danshiki.svg"
 
 export type Collection = {
   id: string;
