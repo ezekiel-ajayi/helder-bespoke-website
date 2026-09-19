@@ -71,7 +71,7 @@ export default function Testimonials() {
       <div className="container-x">
         <div>
           <FadeIn direction="down" as="span">
-            <span className="eyebrow text-gold">Client Words</span>
+            <span className="eyebrow text-gold">Client Feedbacks</span>
           </FadeIn>
           <FadeIn delay={0.08}>
             <h2 className="mt-3 max-w-xl font-display text-balance text-2xl leading-tight text-ivory sm:text-3xl">

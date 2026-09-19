@@ -10,7 +10,6 @@ import { create } from "zustand";
 export type SelectedCollection = {
   id: string;
   name: string;
-  tag: string;
   price: string;
 };
 

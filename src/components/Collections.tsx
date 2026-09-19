@@ -1,19 +1,19 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowUpRight, Check, Plus } from "lucide-react";
+import { Check, Plus } from "lucide-react";
 import { collections } from "@/src/lib/collection-images";
 import { useState, useEffect } from "react";
 import { useCollectionsStore } from "@/src/store/useCollectionsStore";
 import { SlideIn } from "@/src/animations";
+import { SelectedCollection } from "@/src/store/useCollectionsStore";
 
 export default function Collections() {
   const [showAll, setShowAll] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
-
-  const isSelected = useCollectionsStore((s) => s.isSelected);
-  const toggle = useCollectionsStore((s) => s.toggle);
+  const unSelect = useCollectionsStore((s) => s.unselect);
   const select = useCollectionsStore((s) => s.select);
+  const selectedItems = useCollectionsStore((s) => s.selected);
 
   useEffect(() => {
     if (window.innerWidth < 768) {
@@ -21,10 +21,18 @@ export default function Collections() {
       return;
     }
     setIsMobile(false);
-  }, []);
+  }, [selectedItems]);
 
   const showMoreBtnHandler = () => {
     setShowAll(!showAll);
+  };
+
+  const handleSelection = (item: SelectedCollection) => {
+    if (selectedItems.some((c) => c.id === item.id)) {
+      unSelect(item.id);
+    } else {
+      select(item);
+    }
   };
 
   return (
@@ -43,8 +51,7 @@ export default function Collections() {
           </div>
           <p className="w-full min-w-0 max-w-sm text-sm text-onyx/60 md:w-auto">
             Tap the <span className="text-gold-deep">+</span> on any piece to
-            add it to your enquiry — select as many as you like, then review
-            your picks in the form below.
+            add it to your enquiry.
           </p>
         </div>
       </div>
@@ -54,11 +61,10 @@ export default function Collections() {
           {collections.map((item, i) => {
             if (isMobile && !showAll && i >= 2) return null;
 
-            const selected = isSelected(item.id);
+            const selected = selectedItems.some((c) => c.id === item.id);
             const selectionPayload = {
               id: item.id,
               name: item.name,
-              tag: item.tag,
               price: item.price,
             };
 
@@ -86,7 +92,7 @@ export default function Collections() {
                   {/* Select toggle */}
                   <button
                     type="button"
-                    onClick={() => toggle(selectionPayload)}
+                    onClick={() => handleSelection(selectionPayload)}
                     aria-pressed={selected}
                     aria-label={
                       selected
@@ -109,9 +115,6 @@ export default function Collections() {
                   )}
 
                   <div className="absolute inset-x-0 bottom-0 p-6">
-                    <span className="eyebrow text-gold-bright">
-                      {item.tag}
-                    </span>
                     <h3 className="mt-3 font-display text-2xl text-ivory">
                       {item.name}
                     </h3>
@@ -122,14 +125,14 @@ export default function Collections() {
                       <span className="text-sm font-medium text-gold-bright">
                         {item.price}
                       </span>
-                      <a
+                      {/* <a
                         href="#contact"
                         aria-label={`Enquire about ${item.name}`}
                         onClick={() => select(selectionPayload)}
                         className="flex h-9 w-9 items-center justify-center rounded-full border border-ivory/30 text-ivory transition-colors duration-300 hover:border-gold-bright hover:text-gold-bright"
                       >
                         <ArrowUpRight size={16} />
-                      </a>
+                      </a> */}
                     </div>
                   </div>
                 </div>

@@ -5,11 +5,10 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { buildWhatsAppUrl, WHATSAPP_DEFAULT_MESSAGE } from "../lib/whatsapp";
-import AboutDrawer from "./AboutDrawer";
 
 const navLinks = [
   { label: "Collections", href: "#collections" },
-  { label: "Words", href: "#testimonials" },
+  { label: "Feedbacks", href: "#testimonials" },
   { label: "Contact", href: "#contact" },
 ];
 

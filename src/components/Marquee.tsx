@@ -8,7 +8,6 @@ const items = [
   "Hand-Cut in Lagos",
   "Native Attire",
   "International Suiting",
-  "Twenty-Six Measurements",
   "One Measure — Yours",
 ];
 

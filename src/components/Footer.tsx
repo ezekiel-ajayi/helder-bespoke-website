@@ -46,11 +46,6 @@ const sitemap: { heading: string; links: FooterLink[] }[] = [
 
 // Swap these for the brand's real handles.
 const socialLinks = [
-  // {
-  //   label: "Chat on WhatsApp",
-  //   href: buildWhatsAppUrl(WHATSAPP_DEFAULT_MESSAGE),
-  //   Icon: MessageCircle,
-  // },
   {
     label: "Follow on Instagram",
     href: "https://www.instagram.com/helder_bespoke?stkn=MTlpcDU4ZGltY21tOA",
@@ -114,10 +109,10 @@ export default function Footer() {
                     aria-label={label}
                     whileHover={{ y: -3, scale: 1.05 }}
                     transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                    className="cursor-pointer flex h-13 w-13 items-center justify-center rounded-full border border-onyx-line text-ivory/60 transition-colors hover:border-gold hover:text-gold bg-white 
+                    className="cursor-pointer flex h-10 w-10 items-center justify-center rounded-full border border-onyx-line text-ivory/60 transition-colors hover:border-gold hover:text-gold bg-white 
                     "
                   >
-                    <Image src={Icon} alt={label} width={52} height={52} />
+                    <Image src={Icon} alt={label} width={40} height={40} />
                   </motion.a>
                 </StaggerItem>
               ))}
