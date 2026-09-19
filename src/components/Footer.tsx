@@ -7,7 +7,8 @@ import { MessageCircle } from "lucide-react";
 import { buildWhatsAppUrl, WHATSAPP_DEFAULT_MESSAGE } from "../lib/whatsapp";
 import AboutDrawer from "./AboutDrawer";
 import LegalModal from "./LegalModal";
-import TikTokIcon from "./icons/TikTokIcon";
+import TikTokIcon from "@/public/assets/images/tik-tok.png"
+import InstagramIcon from "@/public/assets/images/instagram.png";
 import { FadeIn, StaggerGroup, StaggerItem } from "@/src/animations";
 
 type FooterLink =
@@ -45,20 +46,20 @@ const sitemap: { heading: string; links: FooterLink[] }[] = [
 
 // Swap these for the brand's real handles.
 const socialLinks = [
-  {
-    label: "Chat on WhatsApp",
-    href: buildWhatsAppUrl(WHATSAPP_DEFAULT_MESSAGE),
-    Icon: MessageCircle,
-  },
   // {
-  //   label: "Follow on Instagram",
-  //   href: "https://instagram.com/helderbespoke",
-  //   Icon: Instagram,
+  //   label: "Chat on WhatsApp",
+  //   href: buildWhatsAppUrl(WHATSAPP_DEFAULT_MESSAGE),
+  //   Icon: MessageCircle,
   // },
   {
+    label: "Follow on Instagram",
+    href: "https://www.instagram.com/helder_bespoke?stkn=MTlpcDU4ZGltY21tOA",
+    Icon: "/assets/images/instagram1.png",
+  },
+  {
     label: "Follow on TikTok",
-    href: "https://tiktok.com/@helderbespoke",
-    Icon: TikTokIcon,
+    href: "https://www.tiktok.com/@helder_bespoke?_r=1&_t=ZS-99rb36RPaCq",
+    Icon: "/assets/images/tik-tok.png",
   },
 ];
 
@@ -96,14 +97,13 @@ export default function Footer() {
               delay={0.08}
               className="mt-6 max-w-xs text-sm leading-relaxed text-ivory/55"
             >
-              A Lagos-based bespoke house cutting native Nigerian attire and
-              international suiting for one measure: yours. Every piece
+              A bespoke house crafting native Nigerian attire for you, every piece
               fitted, never assumed.
             </FadeIn>
             <StaggerGroup
               staggerChildren={0.07}
               delayChildren={0.16}
-              className="mt-7 flex gap-3"
+              className="mt-7 flex gap-4"
             >
               {socialLinks.map(({ label, href, Icon }) => (
                 <StaggerItem variant="pop" key={label}>
@@ -114,9 +114,10 @@ export default function Footer() {
                     aria-label={label}
                     whileHover={{ y: -3, scale: 1.05 }}
                     transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-onyx-line text-ivory/60 transition-colors hover:border-gold hover:text-gold"
+                    className="cursor-pointer flex h-13 w-13 items-center justify-center rounded-full border border-onyx-line text-ivory/60 transition-colors hover:border-gold hover:text-gold bg-white 
+                    "
                   >
-                    <Icon size={16} />
+                    <Image src={Icon} alt={label} width={52} height={52} />
                   </motion.a>
                 </StaggerItem>
               ))}
@@ -176,7 +177,7 @@ export default function Footer() {
           <p>
             © {new Date().getFullYear()} Helder Bespoke. All rights reserved.
           </p>
-          <p>Victoria Island, Lagos, Nigeria</p>
+          <p>Ikeja Lagos, Nigeria</p>
         </div>
       </div>
 

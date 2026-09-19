@@ -2,10 +2,6 @@
 // Image sources: Unsplash (royalty-free), sized via the standard
 // images.unsplash.com query params for responsive delivery.
 
-
-
-
-
 export type ProcessStep = {
   id: string;
   label: string;
@@ -55,33 +51,26 @@ export type Testimonial = {
   name: string;
   role: string;
   quote: string;
-  image: string;
 };
 
 export const testimonials: Testimonial[] = [
   {
-    name: "Adebayo K.",
+    name: "Micheal L.",
     role: "Groom, Lagos",
     quote:
       "My agbada held its shape all day. Zero regrets — people still ask who made it.",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop",
   },
   {
     name: "Chioma N.",
     role: "Bought for her husband",
     quote:
-      "The shoulder sits better than suits we bought in London — ready in three weeks.",
-    image:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400&auto=format&fit=crop",
+      "Perfect gift for our weeding anniversary. He loved the fit and the fabric.",
   },
   {
-    name: "Tunde O.",
+    name: "Daniel A.",
     role: "Repeat client, four years",
     quote:
       "They remember my measurements and preferences. Never feels like a transaction.",
-    image:
-      "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=400&auto=format&fit=crop",
   },
 ];
 

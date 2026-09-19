@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence, PanInfo } from "framer-motion";
 import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { testimonials } from "../lib/content";
 import { FadeIn, StaggerGroup, StaggerItem } from "@/src/animations";
+import Avatar from "react-avatar";
 
 const AUTOPLAY_MS = 6000;
 const SWIPE_THRESHOLD = 60;
@@ -19,7 +19,7 @@ function TestimonialCard({ t }: { t: (typeof testimonials)[number] }) {
       </blockquote>
       <figcaption className="mt-5 flex items-center gap-3">
         <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-gold/40">
-          <Image src={t.image} alt={t.name} fill sizes="40px" className="object-cover" />
+          <Avatar name={t.name} size="40" round="50%" color="#0B1220" />
         </div>
         <div className="min-w-0">
           <p className="truncate text-sm font-medium text-ivory">{t.name}</p>
@@ -50,7 +50,10 @@ export default function Testimonials() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [paused, index]);
 
-  const onDragEnd = (_e: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+  const onDragEnd = (
+    _e: MouseEvent | TouchEvent | PointerEvent,
+    info: PanInfo,
+  ) => {
     if (info.offset.x < -SWIPE_THRESHOLD) go(1);
     else if (info.offset.x > SWIPE_THRESHOLD) go(-1);
   };

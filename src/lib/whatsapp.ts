@@ -1,5 +1,5 @@
 // International format, digits only — no "+", spaces, or dashes.
-const WHATSAPP_NUMBER = "2348000000000";
+const WHATSAPP_NUMBER = "2347038125995";
 
 export function buildWhatsAppUrl(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
