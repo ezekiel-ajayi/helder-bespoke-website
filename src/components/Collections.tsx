@@ -1,12 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Check, Plus } from "lucide-react";
 import { collections } from "@/src/lib/collection-images";
 import { useState, useEffect } from "react";
 import { useCollectionsStore } from "@/src/store/useCollectionsStore";
-import { FadeIn, PopIn, StaggerGroup, StaggerItem } from "@/src/animations";
+import { SlideIn } from "@/src/animations";
 
 export default function Collections() {
   const [showAll, setShowAll] = useState<boolean>(false);
@@ -31,36 +30,27 @@ export default function Collections() {
   return (
     <section
       id="collections"
-      className=" pb-24 pt-10 md:pb-32 md:pt-20 bg-cover bg-center"
+      className="overflow-x-clip pb-24 pt-10 md:pb-32 md:pt-20 bg-cover bg-center"
       style={{ backgroundImage: "url('/assets/images/white-bg.png')" }}
     >
       <div className="container-x">
-        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-          <div>
-            <FadeIn direction="down" as="span">
-              <span className="eyebrow text-gold-deep">The Lookbook </span>
-            </FadeIn>
-            <FadeIn delay={0.08}>
-              <h2 className="mt-3 max-w-xl font-display text-balance text-2xl leading-tight text-onyx sm:text-4xl md:text-5xl">
-                Crafted for you
-              </h2>
-            </FadeIn>
+        <div className="flex w-full flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+          <div className="w-full min-w-0 md:w-auto">
+            <span className="eyebrow text-gold-deep">The Lookbook </span>
+            <h2 className="mt-3 max-w-xl font-display text-balance text-2xl leading-tight text-onyx sm:text-4xl md:text-5xl">
+              Crafted for you
+            </h2>
           </div>
-          <FadeIn delay={0.14} direction="none">
-            <p className="max-w-sm text-sm text-onyx/60">
-              Tap the <span className="text-gold-deep">+</span> on any piece
-              to add it to your enquiry — select as many as you like, then
-              review your picks in the form below.
-            </p>
-          </FadeIn>
+          <p className="w-full min-w-0 max-w-sm text-sm text-onyx/60 md:w-auto">
+            Tap the <span className="text-gold-deep">+</span> on any piece to
+            add it to your enquiry — select as many as you like, then review
+            your picks in the form below.
+          </p>
         </div>
       </div>
 
-      <div className="container-x mt-10">
-        <StaggerGroup
-          staggerChildren={0.08}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-6 w-full"
-        >
+      <div className="container-x mt-10 min-w-0">
+        <div className="grid min-w-0 w-full grid-cols-1 gap-6 pb-6 md:grid-cols-2 lg:grid-cols-3">
           {collections.map((item, i) => {
             if (isMobile && !showAll && i >= 2) return null;
 
@@ -73,11 +63,14 @@ export default function Collections() {
             };
 
             return (
-              <StaggerItem
+              <SlideIn
                 key={item.id}
-                variant="fade"
-                className={`group relative w-full overflow-hidden rounded-sm transition-shadow duration-500 ${
-                  selected ? "ring-2 ring-gold shadow-[0_0_0_4px_rgba(93,132,172,0.15)]" : ""
+                direction="up"
+                delay={(i % 3) * 0.08}
+                className={`group relative w-full min-w-0 overflow-hidden rounded-sm transition-shadow duration-500 ${
+                  selected
+                    ? "ring-2 ring-gold shadow-[0_0_0_4px_rgba(93,132,172,0.15)]"
+                    : ""
                 }`}
               >
                 <div className="relative aspect-[3/4] w-full overflow-hidden bg-paper-soft">
@@ -106,29 +99,19 @@ export default function Collections() {
                         : "border-ivory/40 bg-onyx/30 text-ivory hover:border-gold hover:text-gold"
                     }`}
                   >
-                    <AnimatePresence mode="wait" initial={false}>
-                      {selected ? (
-                        <PopIn key="check" spring>
-                          <Check size={16} />
-                        </PopIn>
-                      ) : (
-                        <PopIn key="plus" spring>
-                          <Plus size={16} />
-                        </PopIn>
-                      )}
-                    </AnimatePresence>
+                    {selected ? <Check size={16} /> : <Plus size={16} />}
                   </button>
 
                   {selected && (
-                    <PopIn className="absolute left-4 top-4 z-10">
-                      <span className="eyebrow rounded-full bg-gold px-3 py-1 text-onyx">
-                        Selected
-                      </span>
-                    </PopIn>
+                    <span className="eyebrow absolute left-4 top-4 z-10 rounded-full bg-gold px-3 py-1 text-onyx">
+                      Selected
+                    </span>
                   )}
 
                   <div className="absolute inset-x-0 bottom-0 p-6">
-                    <span className="eyebrow text-gold-bright">{item.tag}</span>
+                    <span className="eyebrow text-gold-bright">
+                      {item.tag}
+                    </span>
                     <h3 className="mt-3 font-display text-2xl text-ivory">
                       {item.name}
                     </h3>
@@ -150,13 +133,15 @@ export default function Collections() {
                     </div>
                   </div>
                 </div>
-              </StaggerItem>
+              </SlideIn>
             );
           })}
-        </StaggerGroup>
+        </div>
 
         <button
-          className={`cursor-pointer eyebrow text-gold-deep hover:text-gold ${!isMobile && "hidden"}`}
+          className={`cursor-pointer eyebrow text-gold-deep hover:text-gold ${
+            !isMobile && "hidden"
+          }`}
           onClick={showMoreBtnHandler}
         >
           {showAll ? "Show less " : "Show More"}
